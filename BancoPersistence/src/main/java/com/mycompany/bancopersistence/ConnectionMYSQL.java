@@ -5,6 +5,8 @@
 package com.mycompany.bancopersistence;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -12,7 +14,17 @@ import java.sql.Connection;
  */
 public class ConnectionMYSQL {
 
-    public void createConnection() {
-
+    public Connection createConnection() throws SQLException {
+        Connection connectionMySQL = null;
+        try {
+            connectionMySQL = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", "root", "adminadmin");
+            return connectionMySQL;
+            
+            
+        }   catch( SQLException sqlException){
+            sqlException.printStackTrace();
+        }
+        
+        return connectionMySQL;
     }
 }
