@@ -16,12 +16,12 @@ import java.sql.Statement;
  * @author luisp
  */
 public class ClienteDAOImp implements IClienteDAO {
-
-    ConnectionMYSQL connectionMYSQL = new ConnectionMYSQL();
+    
+    Connection connectionMYSQL = ConnectionMYSQL.getInstance();
 
   public Cliente crear(Cliente cliente) {
     try {
-        Statement createStatement = getConnection().createStatement();
+        Statement createStatement = connectionMYSQL.createStatement();
         
         String sql = String.format("INSERT INTO CLIENTE(NOMBRE, APELLIDOS, ID_DOMICILIO, EDAD, FECHA_NACIMIENTO, CURP) VALUES ('%s', '%s', %d, %d, '%s', '%s')", 
                             cliente.getNombre(), cliente.getApellidos(), cliente.getDomicilio().getId(), cliente.getEdad(), 
@@ -42,12 +42,5 @@ public class ClienteDAOImp implements IClienteDAO {
 }
 
 
-    public Connection getConnection() {
-        try {
-            return connectionMYSQL.createConnection();
-        } catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        }
-        return null;
-    }
+
 }
