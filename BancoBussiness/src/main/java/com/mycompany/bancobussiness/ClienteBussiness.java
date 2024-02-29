@@ -5,13 +5,15 @@
 package com.mycompany.bancobussiness;
 
 import com.mycompany.bancodomain.Cliente;
+import com.mycompany.bancopersistence.ClienteDAOImp;
+import com.mycompany.bancopersistence.IClienteDAO;
 
 /**
  *
  * @author luisp
  */
 public class ClienteBussiness {
-    
+    IClienteDAO clienteDAO = new ClienteDAOImp();
     
     /**
      * Metodo para crear un nuevo cliente
@@ -19,7 +21,8 @@ public class ClienteBussiness {
     
     public Cliente crear(Cliente cliente){
         
+        clienteDAO.crear(cliente); 
         
-        return null;
+        return cliente;
     }
 }

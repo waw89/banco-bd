@@ -15,9 +15,9 @@ import java.sql.SQLException;
 public class ConnectionMYSQL {
 
     public Connection createConnection() throws SQLException {
-        Connection connectionMySQL = null;
+        Connection connectionMySQL;
         try {
-            connectionMySQL = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", "root", "adminadmin");
+            connectionMySQL = DriverManager.getConnection("jdbc:mysql://localhost:3306/banco", "root", "");
             return connectionMySQL;
             
             
@@ -25,6 +25,6 @@ public class ConnectionMYSQL {
             sqlException.printStackTrace();
         }
         
-        return connectionMySQL;
+        return null;
     }
 }

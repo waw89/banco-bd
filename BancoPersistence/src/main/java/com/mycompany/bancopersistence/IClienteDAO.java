@@ -4,10 +4,12 @@
  */
 package com.mycompany.bancopersistence;
 
+import com.mycompany.bancodomain.Cliente;
+
 /**
  *
  * @author luisp
  */
 public interface IClienteDAO {
-    
+    public Cliente crear(Cliente cliente); 
 }

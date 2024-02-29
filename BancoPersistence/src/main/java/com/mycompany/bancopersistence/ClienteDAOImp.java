@@ -6,6 +6,7 @@ package com.mycompany.bancopersistence;
 
 import com.mycompany.bancodomain.Cliente;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,19 +17,30 @@ import java.sql.Statement;
  */
 public class ClienteDAOImp implements IClienteDAO {
 
-    ConnectionMYSQL connectionMYSQL;
+    ConnectionMYSQL connectionMYSQL = new ConnectionMYSQL();
 
-    public Cliente crear(Cliente cliente) {
-
-        try {
-            Statement createStatement = getConnection().createStatement();
-            ResultSet resultSet = createStatement.executeQuery("INSERT INTO CLIENTE(NOMBRE, APELLIDOS, ID_DOMICILIO, EDAD, FECHA_NACIMIENTO, CURP) VALUES('LUIS', 'CONTRERAS', 1, 20, CURRENT_DATE, 'COPL030607HSRNRSA9');");
-            return null;
-        }catch(SQLException sqlException){
-            sqlException.printStackTrace();
+  public Cliente crear(Cliente cliente) {
+    try {
+        Statement createStatement = getConnection().createStatement();
+        
+        String sql = String.format("INSERT INTO CLIENTE(NOMBRE, APELLIDOS, ID_DOMICILIO, EDAD, FECHA_NACIMIENTO, CURP) VALUES ('%s', '%s', %d, %d, '%s', '%s')", 
+                            cliente.getNombre(), cliente.getApellidos(), cliente.getDomicilio().getId(), cliente.getEdad(), 
+                            new Date(cliente.getFechaNacimiento().getYear(), cliente.getFechaNacimiento().getMonth(), cliente.getFechaNacimiento().getDate()), cliente.getCurp());
+       
+        int result = createStatement.executeUpdate(sql);
+        
+        if (result > 0) {
+            System.out.println("Insert successful");
+        } else {
+            System.out.println("Insert failed");
         }
-        return cliente;
+
+    } catch(SQLException sqlException) {
+        sqlException.printStackTrace();
     }
+    return cliente;
+}
+
 
     public Connection getConnection() {
         try {
