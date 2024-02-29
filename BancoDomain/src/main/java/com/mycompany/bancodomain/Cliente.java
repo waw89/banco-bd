@@ -18,11 +18,11 @@ public class Cliente {
     private int edad;
     private Date fechaNacimiento;
     private String curp;
-
+    private Cuenta cuenta;
     public Cliente() {
     }
 
-    public Cliente(long id, String nombre, String apellidos, Domicilio domicilio, int edad, Date fechaNacimiento, String curp) {
+    public Cliente(long id, String nombre, String apellidos, Domicilio domicilio, int edad, Date fechaNacimiento, String curp, Cuenta cuenta) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -30,7 +30,19 @@ public class Cliente {
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
         this.curp = curp;
+        this.cuenta = cuenta;
     }
+
+    public Cliente(String nombre, String apellidos, Domicilio domicilio, int edad, Date fechaNacimiento, String curp, Cuenta cuenta) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.domicilio = domicilio;
+        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
+        this.curp = curp;
+        this.cuenta = cuenta;
+    }
+
 
     public Cliente(String nombre, String apellidos, Domicilio domicilio, int edad, Date fechaNacimiento, String curp) {
         this.nombre = nombre;
@@ -95,6 +107,14 @@ public class Cliente {
 
     public void setCurp(String curp) {
         this.curp = curp;
+    }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
     }
 
     @Override

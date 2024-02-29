@@ -16,9 +16,10 @@ public class ClienteBussiness {
     IClienteDAO clienteDAO = new ClienteDAOImp();
     
     /**
-     * Metodo para crear un nuevo cliente
+     * 
+     * @param cliente
+     * @return 
      */
-    
     public Cliente crear(Cliente cliente){
         
         clienteDAO.crear(cliente); 

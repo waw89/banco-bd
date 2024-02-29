@@ -4,6 +4,7 @@
  */
 package com.mycompany.bancodomain;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,15 +14,16 @@ import java.util.Date;
 public class Cuenta {
 
     private long id;
-    private int numeroCuenta;
-    private Date fechaApertura;
+    private String numeroCuenta;
+    private LocalDate fechaApertura;
     private float saldo;
-    private int nip;
-
+    private String nip;
+    private Cliente cliente;
+    
     public Cuenta() {
     }
 
-    public Cuenta(long id, int numeroCuenta, Date fechaApertura, float saldo, int nip) {
+    public Cuenta(long id, String numeroCuenta, LocalDate fechaApertura, float saldo, String nip) {
         this.id = id;
         this.numeroCuenta = numeroCuenta;
         this.fechaApertura = fechaApertura;
@@ -29,11 +31,19 @@ public class Cuenta {
         this.nip = nip;
     }
 
-    public Cuenta(int numeroCuenta, Date fechaApertura, float saldo, int nip) {
+    public Cuenta(String numeroCuenta, LocalDate fechaApertura, float saldo, String nip) {
         this.numeroCuenta = numeroCuenta;
         this.fechaApertura = fechaApertura;
         this.saldo = saldo;
         this.nip = nip;
+    }
+
+    public Cuenta(String numeroCuenta, LocalDate fechaApertura, float saldo, String nip, Cliente cliente) {
+        this.numeroCuenta = numeroCuenta;
+        this.fechaApertura = fechaApertura;
+        this.saldo = saldo;
+        this.nip = nip;
+        this.cliente = cliente;
     }
 
     public long getId() {
@@ -44,19 +54,19 @@ public class Cuenta {
         this.id = id;
     }
 
-    public int getNumeroCuenta() {
+    public String getNumeroCuenta() {
         return numeroCuenta;
     }
 
-    public void setNumeroCuenta(int numeroCuenta) {
+    public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
 
-    public Date getFechaApertura() {
+    public LocalDate getFechaApertura() {
         return fechaApertura;
     }
 
-    public void setFechaApertura(Date fechaApertura) {
+    public void setFechaApertura(LocalDate fechaApertura) {
         this.fechaApertura = fechaApertura;
     }
 
@@ -68,12 +78,20 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    public int getNip() {
+    public String getNip() {
         return nip;
     }
 
-    public void setNip(int nip) {
+    public void setNip(String nip) {
         this.nip = nip;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     
     
